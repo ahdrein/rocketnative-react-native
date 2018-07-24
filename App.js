@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Platform, StyleSheet, Text, View, ScrollView} from 'react-native';
+import Repo from './componets/repo';
 
 export default class App extends Component<Props> {
 state = {
@@ -27,25 +28,8 @@ state = {
         </View>
 
         <ScrollView contentContainerStyle={styles.repoList}>
-          <View style={styles.repo}> 
-            <Text style={styles.headerText}>Welcome to React Native!</Text>
-          </View>
-
-          <View style={styles.repo}> 
-            <Text style={styles.headerText}>Welcome to React Native!</Text>
-          </View>
-
-          <View style={styles.repo}> 
-            <Text style={styles.headerText}>Welcome to React Native!</Text>
-          </View>
-
-          <View style={styles.repo}> 
-            <Text style={styles.headerText}>Welcome to React Native!</Text>
-          </View>
-
-          <View style={styles.repo}> 
-            <Text style={styles.headerText}>Welcome to React Native!</Text>
-          </View>
+          { this.state.repos.map(repo => 
+              <Repo key={repo.id} /> )}
         </ScrollView>
       </View>
     );
@@ -76,11 +60,4 @@ const styles = StyleSheet.create({
   repoList: {
     padding: 20
   },
-  repo: {
-    padding: 20,
-    backgroundColor: '#FFF',
-    height: 120,
-    marginBottom: 20,
-    borderRadius: 5,
-  }
 });
